@@ -25,6 +25,7 @@ int main(int argc, char **argv)
             std::cout << "expression > ";
             std::cin >> input;
 
+            // command block
             if (input[0] == '!')
             {
                 if (input.substr(1) == "help")
@@ -33,6 +34,7 @@ int main(int argc, char **argv)
                     std::cout << "description: evaluates arithmetic expressions" << std::endl;
                     std::cout << "author: Vipul Kumar" << std::endl;
                     std::cout << "\ncommands:\n\thelp\n\texit" << std::endl;
+                    
                 }
 
                 else if (input.substr(1) == "exit")
@@ -40,6 +42,7 @@ int main(int argc, char **argv)
                     std::cout << "bye" << std::endl;
                     exit(0);
                 }
+                continue;
             }
 
             expression e(input);
