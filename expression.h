@@ -110,7 +110,7 @@ int op_precedence(char c)
     if (c == '+' || c == '-')
         return 5;
 
-    if (c == '*' || c == '/')
+    if (c == '*' || c == '/' || c == 'x')
         return 4;
 
     if (c == '^')
