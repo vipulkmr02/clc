@@ -39,7 +39,7 @@ public:
     }
 
     size_t str_len;
-    double result{};
+    double result;
     expression(std::string expr)
     {
         this->str = "(" + expr + ")";

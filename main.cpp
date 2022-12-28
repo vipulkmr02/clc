@@ -4,10 +4,10 @@
 int main(int argc, char **argv)
 {
 
-    if (argc > 1)
+    if (argc >= 2)
     {
         std::string expression_str;
-        for (int i = 0; i < (argc - 1); i++)
+        for (int i = 1; i < argc; i++)
             expression_str += argv[i];
 
         expression e(expression_str);
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
             {
                 if (input.substr(1) == "help")
                 {
-                    std::cout << "clc version 1.0" << std::endl;
+                    std::cout << "clc" << std::endl;
                     std::cout << "description: evaluates arithmetic expressions" << std::endl;
                     std::cout << "author: Vipul Kumar" << std::endl;
                     std::cout << "\ncommands:\n\thelp\n\texit" << std::endl;
