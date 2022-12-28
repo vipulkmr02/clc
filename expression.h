@@ -39,7 +39,7 @@ public:
     }
 
     size_t str_len;
-    double result;
+    double result{};
     expression(std::string expr)
     {
         this->str = "(" + expr + ")";
@@ -111,7 +111,7 @@ double operate(double a, double b, char op)
         return pow(a, b);
 }
 
-bool isnum(char c) { return (48 <= c && c <= 57) ? true : false; }
+bool isnum(char c) { return (48 <= c && c <= 57); }
 
 int op_precedence(char c)
 {

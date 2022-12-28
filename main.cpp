@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 
     if (argc > 1)
     {
-        std::string expression_str = "";
+        std::string expression_str;
         for (int i = 0; i < (argc - 1); i++)
             expression_str += argv[i];
 
@@ -20,10 +20,10 @@ int main(int argc, char **argv)
         std::string input;
         std::cout << "type !help for help\n";
 
-        while (1)
+        while (true)
         {
             std::cout << "expression > ";
-            std::cin >> input;
+            std::getline(std::cin, input);
 
             if (input[0] == '!')
             {
