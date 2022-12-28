@@ -13,9 +13,9 @@ class expression
 private:
     std::stack<char> *operators;
     std::stack<double> *operands;
+    std::string str;
 
 public:
-    std::string str;
     void process()
     {
         // pop two operands
