@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 
             expression e(input);
             e.evaluate();
-            std::cout << e.str << std::endl;
             std::cout << e.result << std::endl;
         }
     }
