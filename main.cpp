@@ -3,6 +3,8 @@
 
 int main(int argc, char **argv)
 {
+    if (argc == 1)
+        std::cout << "No arguments" << std::endl;
 
     if (argc >= 2)
     {
