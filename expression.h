@@ -11,9 +11,9 @@ int op_precedence(char c);
 class expression
 {
 private:
-    std::string str;
     std::stack<char> *operators;
     std::stack<double> *operands;
+    std::string str;
 
 public:
     void process()
@@ -28,6 +28,14 @@ public:
         this->operators->pop();
         // push the result of operation on the stack
         this->operands->push(operate(a, b, op));
+
+        if (this->operators->size() > 1)
+        {
+            if (this->operators->top() == '(')
+            {
+                this->operators->pop();
+            }
+        }
     }
 
     size_t str_len;
@@ -107,6 +115,9 @@ bool isnum(char c) { return (48 <= c && c <= 57) ? true : false; }
 
 int op_precedence(char c)
 {
+    if (c == '(')
+        return 5;
+
     if (c == '+' || c == '-')
         return 5;
 
@@ -115,4 +126,7 @@ int op_precedence(char c)
 
     if (c == '^')
         return 3;
+
+    if (c == ')')
+        return 1;
 };
