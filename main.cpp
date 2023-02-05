@@ -97,6 +97,8 @@ public:
     }
 };
 
+
+// This Function evaluates the binary operations
 double operate(double a, double b, char op)
 {
     if (op == '+')
@@ -111,8 +113,12 @@ double operate(double a, double b, char op)
         return pow(a, b);
 }
 
+
+// used to check whether a character is number or not
 bool isnum(char c) { return (48 <= c && c <= 57); }
 
+
+// returns the operator's precedence
 int op_precedence(char c)
 {
     if (c == '(')
@@ -134,12 +140,10 @@ int op_precedence(char c)
 
 int main(int argc, char **argv)
 {
-    std::cout << "hello" << std::endl;
-
     if (argc == 1)
         std::cout << "No arguments" << std::endl;
 
-    if (argc >= 2)
+    else if (argc >= 2)
     {
         std::string expression_str;
         for (int i = 1; i < argc; i++)
