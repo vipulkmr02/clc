@@ -3,10 +3,20 @@
 #include <string>
 #include <cstring>
 #include <cmath>
+#include <vector>
 
 bool isnum(char c);
 double operate(double, double, char);
 int op_precedence(char c);
+
+bool verbosity = false;
+
+std::string help_txt = "clc [expression]\
+                        \n\t+ for addition \
+                        \n\t\\ for division \
+                        \n\tx for multiplication \
+                        \n\t- for subtraction \
+                        ";
 
 class expression
 {
@@ -30,12 +40,8 @@ public:
         this->operands->push(operate(a, b, op));
 
         if (this->operators->size() > 1)
-        {
             if (this->operators->top() == '(')
-            {
                 this->operators->pop();
-            }
-        }
     }
 
     size_t str_len;
@@ -97,7 +103,6 @@ public:
     }
 };
 
-
 // This Function evaluates the binary operations
 double operate(double a, double b, char op)
 {
@@ -111,12 +116,11 @@ double operate(double a, double b, char op)
         return a / b;
     if (op == '^')
         return pow(a, b);
+    return 0.0000; // only for suppressing warnings
 }
-
 
 // used to check whether a character is number or not
 bool isnum(char c) { return (48 <= c && c <= 57); }
-
 
 // returns the operator's precedence
 int op_precedence(char c)
@@ -135,13 +139,67 @@ int op_precedence(char c)
 
     if (c == ')')
         return 1;
+
+    return 0; // only for supressing warnings
 };
 
+void interactive()
+{
+    std::string input;
+    std::cout << "type !help for help\n";
+
+    while (true)
+    {
+        std::cout << "expression > ";
+        std::getline(std::cin, input);
+
+        // command block
+        if (input[0] != '!')
+        {
+            expression e(input);
+            e.evaluate();
+            std::cout << e.result << std::endl;
+        }
+
+        else
+        {
+            if (input.substr(1) == "help")
+            {
+                std::cout << "clc" << std::endl;
+                std::cout << "description: evaluates arithmetic expressions" << std::endl;
+                std::cout << "author: Vipul Kumar" << std::endl;
+                std::cout << "\ncommands:\n\thelp\n\texit" << std::endl;
+            }
+
+            else if (input.substr(1) == "exit")
+            {
+                std::cout << "bye" << std::endl;
+                exit(0);
+            }
+            continue;
+        }
+    }
+}
 
 int main(int argc, char **argv)
 {
+    std::vector<char *> flags;
+    // putting all flags passed in a vector
+    for (int i = 1; i < argc; i++)
+        if (argv[i][0] == '-' && sizeof(argv[i]))
+            flags.push_back(argv[i]);
+
     if (argc == 1)
         std::cout << "No arguments" << std::endl;
+
+    else if (argc == 2 && argv[1][0] == '-')
+    {
+        if (argv[1][1] == 'h')
+            std::cout << help_txt << std::endl;
+
+        else if (argv[1][1] == 'i')
+            interactive();
+    }
 
     else if (argc >= 2)
     {
@@ -154,39 +212,5 @@ int main(int argc, char **argv)
         std::cout << e.result << std::endl;
     }
 
-    else
-    {
-        std::string input;
-        std::cout << "type !help for help\n";
-
-        while (true)
-        {
-            std::cout << "expression > ";
-            std::getline(std::cin, input);
-
-            // command block
-            if (input[0] == '!')
-            {
-                if (input.substr(1) == "help")
-                {
-                    std::cout << "clc" << std::endl;
-                    std::cout << "description: evaluates arithmetic expressions" << std::endl;
-                    std::cout << "author: Vipul Kumar" << std::endl;
-                    std::cout << "\ncommands:\n\thelp\n\texit" << std::endl;
-                                }
-
-                else if (input.substr(1) == "exit")
-                {
-                    std::cout << "bye" << std::endl;
-                    exit(0);
-                }
-                continue;
-            }
-
-            expression e(input);
-            e.evaluate();
-            std::cout << e.result << std::endl;
-        }
-    }
     return 0;
 }

@@ -1,4 +1,4 @@
-# CLC
+# clc
  - Description: A C++ program to evaluate arithmetic expressions
  - Author: Vipul Kumar
 
