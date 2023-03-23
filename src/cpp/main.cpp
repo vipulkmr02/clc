@@ -14,8 +14,7 @@ int main(int argc, char **argv)
 
         expression e(expression_str);
         e.evaluate();
-        // std::cout << e.result << std::endl;
-        printf("%.3f", e.result);
+        printf("%.3f\n", e.result);
     }
 
     else
@@ -25,7 +24,7 @@ int main(int argc, char **argv)
 
         while (true)
         {
-            std::cout << "expression > ";
+            std::cout << "expression$ ";
             std::getline(std::cin, input);
 
             // command block
@@ -40,7 +39,7 @@ int main(int argc, char **argv)
                     
                 }
 
-                else if (input.substr(1) == "exit")
+                else if (input.substr(1) == "q" || input.substr(1) == "exit")
                 {
                     std::cout << "bye" << std::endl;
                     exit(0);
@@ -50,7 +49,7 @@ int main(int argc, char **argv)
 
             expression e(input);
             e.evaluate();
-            std::cout << e.result << std::endl;
+            std::cout << "result: " << e.result << std::endl;
         }
     }
 
