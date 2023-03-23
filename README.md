@@ -13,8 +13,8 @@ Division: a / b
 Exponent (power): a ^ b 
 
 ## Examples
-to find sum of two numbers: `$ clc number1 + number2` 
-to subtract two numbers: `$ clc number1 - number2` 
-to find product of two numbers: `$ clc number1 x number2` 
-to divide two numbers: `$ clc number1 / number2` 
-to find power of two numbers: `$ clc number1 ^ number2` 
+sum of two numbers: `$ clc number1 + number2`
+subtract two numbers: `$ clc number1 - number2`
+product of two numbers: `$ clc number1 x number2`
+divide two numbers: `$ clc number1 / number2`
+factorial: `$ clc number!`
