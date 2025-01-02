@@ -1,5 +1,5 @@
 #include <iostream>
-#include "expression.h"
+#include "expression.cpp"
 
 int main(int argc, char **argv)
 {
